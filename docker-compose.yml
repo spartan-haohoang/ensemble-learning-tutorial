@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  ensemble-learning:
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      # Mount the current directory to preserve changes
+      - .:/app
+      # Mount a volume for Jupyter data persistence
+      - jupyter_data:/home/jupyter/.jupyter
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=
+      - JUPYTER_ALLOW_ROOT=1
+    restart: unless-stopped
+    container_name: ensemble-learning-jupyter
+
+volumes:
+  jupyter_data:
