@@ -6,10 +6,11 @@ import pytest
 import pandas as pd
 import numpy as np
 from pathlib import Path
+from typing import Tuple, Generator
 
 
 @pytest.fixture
-def sample_data():
+def sample_data() -> pd.DataFrame:
     """Create sample data for testing"""
     np.random.seed(42)
     n_samples = 100
@@ -25,7 +26,7 @@ def sample_data():
 
 
 @pytest.fixture
-def sample_classification_data():
+def sample_classification_data() -> Tuple[np.ndarray, np.ndarray]:
     """Create sample classification data"""
     np.random.seed(42)
     n_samples = 200
@@ -41,7 +42,7 @@ def sample_classification_data():
 
 
 @pytest.fixture
-def sample_regression_data():
+def sample_regression_data() -> Tuple[np.ndarray, np.ndarray]:
     """Create sample regression data"""
     np.random.seed(42)
     n_samples = 100
@@ -53,12 +54,12 @@ def sample_regression_data():
 
 
 @pytest.fixture
-def data_dir():
+def data_dir() -> Path:
     """Get the data directory path"""
     return Path(__file__).parent.parent / "data"
 
 
 @pytest.fixture
-def temp_dir(tmp_path):
+def temp_dir(tmp_path: Path) -> Path:
     """Create a temporary directory for testing"""
     return tmp_path

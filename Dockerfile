@@ -34,8 +34,10 @@ EXPOSE 8888
 
 # Create a non-root user for security
 RUN useradd -m -u 1000 jupyter && \
-    chown -R jupyter:jupyter /app
+    chown -R jupyter:jupyter /app && \
+    mkdir -p /home/jupyter/.jupyter && \
+    chown -R jupyter:jupyter /home/jupyter
 USER jupyter
 
 # Start Jupyter Lab
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=''", "--NotebookApp.password=''"]
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--NotebookApp.token=''", "--NotebookApp.password=''"]

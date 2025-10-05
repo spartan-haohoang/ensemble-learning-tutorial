@@ -72,7 +72,7 @@ def validate_parquet_data(file_path: str) -> bool:
         return False
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description="Validate data files")
     parser.add_argument(
         "--data-dir", 

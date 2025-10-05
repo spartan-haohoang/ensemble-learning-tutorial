@@ -10,12 +10,13 @@ from sklearn.ensemble import GradientBoostingClassifier, GradientBoostingRegress
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, mean_squared_error
 import xgboost as xgb
+from typing import Tuple
 
 
 class TestRandomForest:
     """Test Random Forest ensemble methods"""
     
-    def test_random_forest_classifier(self, sample_classification_data):
+    def test_random_forest_classifier(self, sample_classification_data: Tuple[np.ndarray, np.ndarray]) -> None:
         """Test Random Forest classifier"""
         X, y = sample_classification_data
         X_train, X_test, y_train, y_test = train_test_split(
@@ -29,7 +30,7 @@ class TestRandomForest:
         accuracy = accuracy_score(y_test, y_pred)
         assert accuracy > 0.5  # Should perform better than random
         
-    def test_random_forest_regressor(self, sample_regression_data):
+    def test_random_forest_regressor(self, sample_regression_data: Tuple[np.ndarray, np.ndarray]) -> None:
         """Test Random Forest regressor"""
         X, y = sample_regression_data
         X_train, X_test, y_train, y_test = train_test_split(
@@ -47,7 +48,7 @@ class TestRandomForest:
 class TestAdaBoost:
     """Test AdaBoost ensemble methods"""
     
-    def test_adaboost_classifier(self, sample_classification_data):
+    def test_adaboost_classifier(self, sample_classification_data: Tuple[np.ndarray, np.ndarray]) -> None:
         """Test AdaBoost classifier"""
         X, y = sample_classification_data
         X_train, X_test, y_train, y_test = train_test_split(
@@ -61,7 +62,7 @@ class TestAdaBoost:
         accuracy = accuracy_score(y_test, y_pred)
         assert accuracy > 0.5  # Should perform better than random
         
-    def test_adaboost_regressor(self, sample_regression_data):
+    def test_adaboost_regressor(self, sample_regression_data: Tuple[np.ndarray, np.ndarray]) -> None:
         """Test AdaBoost regressor"""
         X, y = sample_regression_data
         X_train, X_test, y_train, y_test = train_test_split(
@@ -79,7 +80,7 @@ class TestAdaBoost:
 class TestGradientBoosting:
     """Test Gradient Boosting ensemble methods"""
     
-    def test_gradient_boosting_classifier(self, sample_classification_data):
+    def test_gradient_boosting_classifier(self, sample_classification_data: Tuple[np.ndarray, np.ndarray]) -> None:
         """Test Gradient Boosting classifier"""
         X, y = sample_classification_data
         X_train, X_test, y_train, y_test = train_test_split(
@@ -93,7 +94,7 @@ class TestGradientBoosting:
         accuracy = accuracy_score(y_test, y_pred)
         assert accuracy > 0.5  # Should perform better than random
         
-    def test_gradient_boosting_regressor(self, sample_regression_data):
+    def test_gradient_boosting_regressor(self, sample_regression_data: Tuple[np.ndarray, np.ndarray]) -> None:
         """Test Gradient Boosting regressor"""
         X, y = sample_regression_data
         X_train, X_test, y_train, y_test = train_test_split(
@@ -111,7 +112,7 @@ class TestGradientBoosting:
 class TestXGBoost:
     """Test XGBoost ensemble methods"""
     
-    def test_xgboost_classifier(self, sample_classification_data):
+    def test_xgboost_classifier(self, sample_classification_data: Tuple[np.ndarray, np.ndarray]) -> None:
         """Test XGBoost classifier"""
         X, y = sample_classification_data
         X_train, X_test, y_train, y_test = train_test_split(
@@ -125,7 +126,7 @@ class TestXGBoost:
         accuracy = accuracy_score(y_test, y_pred)
         assert accuracy > 0.5  # Should perform better than random
         
-    def test_xgboost_regressor(self, sample_regression_data):
+    def test_xgboost_regressor(self, sample_regression_data: Tuple[np.ndarray, np.ndarray]) -> None:
         """Test XGBoost regressor"""
         X, y = sample_regression_data
         X_train, X_test, y_train, y_test = train_test_split(
@@ -143,7 +144,7 @@ class TestXGBoost:
 class TestEnsembleComparison:
     """Test ensemble method comparisons"""
     
-    def test_ensemble_vs_single_model_classification(self, sample_classification_data):
+    def test_ensemble_vs_single_model_classification(self, sample_classification_data: Tuple[np.ndarray, np.ndarray]) -> None:
         """Test that ensemble performs better than single model for classification"""
         X, y = sample_classification_data
         X_train, X_test, y_train, y_test = train_test_split(
@@ -166,7 +167,7 @@ class TestEnsembleComparison:
         # Ensemble should perform at least as well as single model
         assert ensemble_accuracy >= single_accuracy * 0.9  # Allow some tolerance
         
-    def test_ensemble_vs_single_model_regression(self, sample_regression_data):
+    def test_ensemble_vs_single_model_regression(self, sample_regression_data: Tuple[np.ndarray, np.ndarray]) -> None:
         """Test that ensemble performs better than single model for regression"""
         X, y = sample_regression_data
         X_train, X_test, y_train, y_test = train_test_split(

@@ -10,7 +10,7 @@ import argparse
 from pathlib import Path
 
 
-def run_notebook(notebook_path: str, port: int = 8888, ip: str = "0.0.0.0"):
+def run_notebook(notebook_path: str, port: int = 8888, ip: str = "0.0.0.0") -> None:
     """Run Jupyter Lab with the specified notebook"""
     
     if not os.path.exists(notebook_path):
@@ -44,7 +44,7 @@ def run_notebook(notebook_path: str, port: int = 8888, ip: str = "0.0.0.0"):
         sys.exit(1)
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description="Run Jupyter notebook")
     parser.add_argument(
         "--notebook", 
