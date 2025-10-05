@@ -14,18 +14,20 @@ ENV JUPYTER_ALLOW_ROOT=1
 RUN apt-get update && apt-get install -y \
     build-essential \
     curl \
-    software-properties-common \
     git \
     && rm -rf /var/lib/apt/lists/*
 
+# Install UV
+RUN pip install uv
+
 # Copy project files
 COPY pyproject.toml ./
+COPY README.md ./
 COPY data/ ./data/
 COPY ensembles.ipynb ./
 
-# Install Python dependencies
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -e .
+# Install Python dependencies with UV
+RUN uv pip install --system --no-cache -e .
 
 # Expose Jupyter port
 EXPOSE 8888

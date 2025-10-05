@@ -55,6 +55,15 @@ dev = [
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+[tool.hatch.build.targets.wheel]
+packages = ["scripts", "tests"]
+include = [
+    "ensembles.ipynb",
+    "run_notebook.py",
+    "validate_data.py",
+    "data/*",
+]
+
 [tool.black]
 line-length = 88
 target-version = ['py311']
